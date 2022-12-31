@@ -39,6 +39,8 @@ if (navigator.geolocation) {
                     autoClose: false,
                     closeOnClick: false,
                     className: 'running-popup'
+
+                    console.log(autoclose)
                     
                 }))
                     .setPopupContent('Workout')

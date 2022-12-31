@@ -17,33 +17,17 @@ if (navigator.geolocation) {
         function (position) {
             const { latitude } = position.coords;
             const { longitude } = position.coords;
-            const coords = [latitude, longitude];
-            // LEAFLET.JS
-            const map = L.map('map').setView(coords, 13);
+            var map = L.map('map').setView([51.505, -0.09], 13);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
               attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             }).addTo(map);
 
-            
-            
-            map.on('click', function (mapEvent) {
-                console.log(mapEvent);
-
-                const { lat, lng } = mapEvent.latlng;
-
-                L.marker([lat, lng]).addTo(map).bindPopup(L.popup({
-                    maxWidth: 250,
-                    minWidth: 100,
-                    autoClose: false,
-                    closeOnClick: false,
-                    className: 'running-popup'
-                    
-                }))
-                    .setPopupContent('Workout')
-                    .openPopup();
-            });
+            L.marker([51.5, -0.09])
+              .addTo(map)
+              .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+              .openPopup();
         },
         function () {
             alert('Couldn\'t get your position');
