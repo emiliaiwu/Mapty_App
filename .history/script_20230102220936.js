@@ -10,7 +10,6 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
-let map, mapEvent;
 
 
 if (navigator.geolocation) 
@@ -20,7 +19,7 @@ if (navigator.geolocation)
             const { longitude } = position.coords;
             const coords = [latitude, longitude];
             // LEAFLET.JS
-            map = L.map('map').setView(coords, 13);
+            const map = L.map('map').setView(coords, 13);
 
             L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
                 attribution:
@@ -28,9 +27,8 @@ if (navigator.geolocation)
             }).addTo(map);
 
             
-            // Handling clicks on map
-            map.on('click', function (mapE) {
-                mapEvent = mapE;
+            
+            map.on('click', function (mapEvent) {
                 // Show the form
                 form.classList.remove('hidden');
                 inputDistance.focus();
@@ -45,12 +43,8 @@ if (navigator.geolocation)
 
     
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+form.addEventListener('submit', () => {
 
-    // Clear input fields
-
-    // Display marker
     const { lat, lng } = mapEvent.latlng;
 
     L.marker([lat, lng]).addTo(map).bindPopup(L.popup({

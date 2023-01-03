@@ -10,7 +10,7 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
-let map, mapEvent;
+let map;
 
 
 if (navigator.geolocation) 
@@ -28,9 +28,8 @@ if (navigator.geolocation)
             }).addTo(map);
 
             
-            // Handling clicks on map
-            map.on('click', function (mapE) {
-                mapEvent = mapE;
+            // Handling clicks om 
+            map.on('click', function (mapEvent) {
                 // Show the form
                 form.classList.remove('hidden');
                 inputDistance.focus();
@@ -45,12 +44,8 @@ if (navigator.geolocation)
 
     
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+form.addEventListener('submit', () => {
 
-    // Clear input fields
-
-    // Display marker
     const { lat, lng } = mapEvent.latlng;
 
     L.marker([lat, lng]).addTo(map).bindPopup(L.popup({

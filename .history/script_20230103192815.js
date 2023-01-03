@@ -46,11 +46,8 @@ if (navigator.geolocation)
     
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.pre
 
-    // Clear input fields
-
-    // Display marker
     const { lat, lng } = mapEvent.latlng;
 
     L.marker([lat, lng]).addTo(map).bindPopup(L.popup({

@@ -49,8 +49,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Clear input fields
-
-    // Display marker
     const { lat, lng } = mapEvent.latlng;
 
     L.marker([lat, lng]).addTo(map).bindPopup(L.popup({

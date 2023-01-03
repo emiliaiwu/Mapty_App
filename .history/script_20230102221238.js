@@ -30,7 +30,7 @@ if (navigator.geolocation)
             
             // Handling clicks on map
             map.on('click', function (mapE) {
-                mapEvent = mapE;
+                mapEvent
                 // Show the form
                 form.classList.remove('hidden');
                 inputDistance.focus();
@@ -45,12 +45,8 @@ if (navigator.geolocation)
 
     
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+form.addEventListener('submit', () => {
 
-    // Clear input fields
-
-    // Display marker
     const { lat, lng } = mapEvent.latlng;
 
     L.marker([lat, lng]).addTo(map).bindPopup(L.popup({
